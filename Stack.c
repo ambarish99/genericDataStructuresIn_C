@@ -64,7 +64,6 @@ return stack->size==0;
 
 int main()
 {
-
 STACK stack;
 initStack(&stack,sizeof(int));
 int x;
