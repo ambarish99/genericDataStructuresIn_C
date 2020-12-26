@@ -123,6 +123,7 @@ mid1=(LBUB*)malloc(sizeof(LBUB));
 mid1->lb=lbub->lb;
 mid1->ub=mid;
 push(&s1,mid1);
+free(mid1);
 }
 if(mid+1<lbub->ub)
 {
@@ -130,6 +131,7 @@ mid2=(LBUB*)malloc(sizeof(LBUB));
 mid2->lb=mid+1;
 mid2->ub=lbub->ub;
 push(&s1,mid2);
+free(mid2);
 }
 }
 int e,f,g;

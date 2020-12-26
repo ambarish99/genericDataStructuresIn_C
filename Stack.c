@@ -22,19 +22,29 @@ stack->elementSize=elementSize;
 stack->size=0;
 }
 
-void push(STACK *stack,const void* data)
+int push(STACK *stack,const void* data)
 {
+if(stack==NULL) return 0;
+if(data==NULL) return 0;
 StackNode *t;
 t=(StackNode*)malloc(sizeof(StackNode));
+if(t==NULL) return 0;
 t->data=(void*)malloc(stack->elementSize);
+if(t->data==NULL)
+{
+free(t);
+return 0;
+}
 memcpy(t->data,data,stack->elementSize);
 t->next=stack->top;
 stack->top=t;
 stack->size++;
+return 1;
 }
 
-void pop(STACK *stack,void* data)
+int pop(STACK *stack,void* data)
 {
+if(stack==NULL || data==NULL) return 0;
 StackNode *t;
 t=stack->top;
 stack->top=stack->top->next;
@@ -42,6 +52,7 @@ stack->size--;
 memcpy(data,(const void*)t->data,stack->elementSize);
 free(t->data);
 free(t);
+return 1;
 }
 
 int isEmpty(STACK *stack)
