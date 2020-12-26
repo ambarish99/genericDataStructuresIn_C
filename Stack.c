@@ -57,6 +57,7 @@ return 1;
 
 int isEmpty(STACK *stack)
 {
+if(stack==NULL) return 0;
 return stack->size==0;
 }
 
